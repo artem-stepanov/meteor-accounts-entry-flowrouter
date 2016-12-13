@@ -4,10 +4,10 @@ if (typeof AccountsEntry === "undefined") {
 
 AccountsEntry = {
   settings: {
-    layoutName: "",
-    contentTemplateName: "",
+    layoutName: "layoutHome",
+    contentTemplateName: "yield",
     wrapLinks: true,
-    homeRoute: '/home',
+    homeRoute: '/',
     dashboardRoute: '/dashboard',
     passwordSignupFields: 'EMAIL_ONLY',
     emailToLower: true,

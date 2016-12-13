@@ -57,7 +57,7 @@ accountsEntryRoutes.route('/sign-out', {
 accountsEntryRoutes.route('/reset-password/:resetToken', {
   name: 'entryResetPassword',
   triggersEnter: [function(context, redirect) {
-    Session.set('resetToken', this.params.resetToken);
+    Session.set('resetToken', context.params.resetToken);
   }],
   action: function() {
     BlazeLayout.render(AccountsEntry.settings.layoutName, { 
