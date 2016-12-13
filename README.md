@@ -4,7 +4,7 @@
 *********************************************************
 **************  **IMPORTANT NOTE:**  ********************
 *********************************************************
-This was initially forked from [https://github.com/Differential/accounts-entry] (https://github.com/Differential/accounts-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
+This was initially forked from [https://github.com/Differential-entry] (https://github.com/Differential-entry) eliminated coffeescript, simpleForm and t9n (replaced by [anti:i18n] (https://github.com/anticoders/meteor-i18n)).
 
 accounts-entry-flowrouter is a package that relies on Flowrouter and provides an
 alternative interface to accounts-ui, with whole pages for sign up
@@ -26,14 +26,14 @@ meteor add selaias:accounts-entry-flowrouter
 
 ## Provided routes
 
-You will get a group of routes with a prefix `/accounts` and the necessary templates for:
+You will get a group of routes with a prefix `` and the necessary templates for:
 
 ```
-/accounts/sign-in
-/accounts/sign-out
-/accounts/sign-up
-/accounts/forgot-password
-/accounts/verification-pending
+/sign-in
+/sign-out
+/sign-up
+/forgot-password
+/verification-pending
 ```
 
 

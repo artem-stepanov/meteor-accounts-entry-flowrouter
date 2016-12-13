@@ -1,5 +1,4 @@
 var accountsEntryRoutes = FlowRouter.group({
-  prefix: '/accounts',
   triggersEnter: [trackRouteEntry],
   triggersExit: [trackRouteEntry]
 });

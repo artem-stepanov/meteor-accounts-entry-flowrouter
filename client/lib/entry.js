@@ -46,7 +46,7 @@ AccountsEntry = {
     }
     if (!Meteor.user()){
       Session.set('fromWhere', router.url);
-      FlowRouter.go('/accounts/sign-in');
+      FlowRouter.go('/sign-in');
       Session.set('entryError', i18n('error.signInRequired'));
     }
   }
