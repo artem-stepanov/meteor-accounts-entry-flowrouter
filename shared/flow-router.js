@@ -1,10 +1,10 @@
 var accountsEntryRoutes = FlowRouter.group({
-  triggersEnter: [trackRouteEntry],
-  triggersExit: [trackRouteEntry]
+    triggersEnter: [trackRouteEntry],
+    triggersExit: [trackRouteEntry]
 });
 
 function trackRouteEntry(context) {
-  Alerts.clear();
+    Alerts.clear();
 }
 
 function trackRouteClose(context) {
@@ -12,63 +12,67 @@ function trackRouteClose(context) {
 }
 
 accountsEntryRoutes.route("/sign-in", {
-  name: 'entrySignIn',
-  triggersEnter: [function(context, redirect) {
-    if (Meteor.userId()) {
-      redirect(AccountsEntry.settings.dashboardRoute);
+    name: 'entrySignIn',
+    triggersEnter: [function (context, redirect) {
+        if (Meteor.userId()) {
+            redirect(AccountsEntry.settings.dashboardRoute);
+        }
+        Session.set('buttonText', 'in');
+    }],
+    action: function () {
+        BlazeLayout.render(AccountsEntry.settings.layoutName, {
+            [AccountsEntry.settings.contentTemplateName]: 'entrySignIn'
+        });
     }
-    Session.set('buttonText', 'in');
-  }],
-  action: function() { 
-    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
-      [AccountsEntry.settings.contentTemplateName]: 'entrySignIn'});
-  }
 });
 accountsEntryRoutes.route("/sign-up", {
-  name: 'entrySignUp',
-  triggersEnter: [function(context, redirect) {
-    Session.set('buttonText', 'up');
-  }],
-  action: function() {
-    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
-      [AccountsEntry.settings.contentTemplateName]: 'entrySignUp'});
-  }
+    name: 'entrySignUp',
+    triggersEnter: [function (context, redirect) {
+        Session.set('buttonText', 'up');
+    }],
+    action: function () {
+        BlazeLayout.render(AccountsEntry.settings.layoutName, {
+            [AccountsEntry.settings.contentTemplateName]: 'entrySignUp'
+        });
+    }
 });
 accountsEntryRoutes.route("/forgot-password", {
-  name: 'entryForgotPassword',
-  action: function() {
-    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
-      [AccountsEntry.settings.contentTemplateName]: 'entryForgotPassword'});
-  }
+    name: 'entryForgotPassword',
+    action: function () {
+        BlazeLayout.render(AccountsEntry.settings.layoutName, {
+            [AccountsEntry.settings.contentTemplateName]: 'entryForgotPassword'
+        });
+    }
 });
 accountsEntryRoutes.route('/sign-out', {
-  name: 'entrySignOut',
-  triggersEnter: [function(context, redirect) {
-    Meteor.logout();
-    if (AccountsEntry.settings.homeRoute) {
-      redirect(AccountsEntry.settings.homeRoute);
+    name: 'entrySignOut',
+    triggersEnter: [function (context, redirect) {
+        Meteor.logout();
+        if (AccountsEntry.settings.homeRoute) {
+            redirect(AccountsEntry.settings.homeRoute);
+        }
+    }],
+    action: function () {
+        console.log('User signed out.')
     }
-  }],
-  action: function() {
-    console.log('User signed out.')
-  }
 });
 accountsEntryRoutes.route('/reset-password/:resetToken', {
-  name: 'entryResetPassword',
-  triggersEnter: [function(context, redirect) {
-    Session.set('resetToken', context.params.resetToken);
-  }],
-  action: function() {
-    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
-      [AccountsEntry.settings.contentTemplateName]: 'entryResetPassword'});
-  }
+    name: 'entryResetPassword',
+    triggersEnter: [function (context, redirect) {
+        Session.set('resetToken', context.params.resetToken);
+    }],
+    action: function () {
+        BlazeLayout.render(AccountsEntry.settings.layoutName, {
+            [AccountsEntry.settings.contentTemplateName]: 'entryResetPassword'
+        });
+    }
 });
 
 accountsEntryRoutes.route('/verification-pending', {
-  name: 'entryEmailVerificationPending',
-  action: function() {
-    BlazeLayout.render(AccountsEntry.settings.layoutName, { 
-      [AccountsEntry.settings.contentTemplateName]: 'home'
-    });
-  }
+    name: 'entryEmailVerificationPending',
+    action: function () {
+        BlazeLayout.render(AccountsEntry.settings.layoutName, {
+            [AccountsEntry.settings.contentTemplateName]: 'home'
+        });
+    }
 });
